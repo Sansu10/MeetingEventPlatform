@@ -1,0 +1,78 @@
+.create-event-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.create-event-form {
+  max-width: 800px;
+}
+
+.form-section-title {
+  color: #1a73e8;
+  font-size: 16px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1a73e8;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.required {
+  color: red;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.datetime-group .datetime-inputs {
+  display: flex;
+  gap: 12px;
+}
+
+.datetime-inputs input,
+.datetime-inputs select {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.cancel-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-button {
+  padding: 8px 24px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
