@@ -1,0 +1,277 @@
+.landing-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: white;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a73e8;
+  }
+  
+  .sign-in-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #1a73e8;
+    border-radius: 20px;
+    background: white;
+    color: #1a73e8;
+    cursor: pointer;
+  }
+  
+  .hero-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .sign-up-btn {
+    padding: 1rem 2rem;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  
+  .app-preview {
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 2rem;
+  }
+  
+  .booking-interface {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .sidebar-preview {
+    width: 240px;
+    background: white;
+    padding: 2rem;
+    border-right: 1px solid #eee;
+  }
+  
+  .logo-preview {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin-bottom: 2rem;
+  }
+  
+  .sidebar-preview ul {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+  
+  .sidebar-preview li {
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .sidebar-preview li.active {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+  }
+  
+  .user-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+  }
+  
+  .user-preview img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .main-content-preview {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1px solid #eee;
+    margin: 2rem 0;
+  }
+  
+  .tabs span {
+    padding: 0.5rem 0;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .tabs span.active {
+    color: #1a73e8;
+    border-bottom: 2px solid #1a73e8;
+  }
+  
+  .meetings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .meeting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .meeting-time .time {
+    color: #1a73e8;
+    margin-top: 0.25rem;
+  }
+  
+  .status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+  }
+  
+  .status.rejected {
+    background: #fde8e8;
+    color: #dc3545;
+  }
+  
+  .status.accepted {
+    background: #e8f5e9;
+    color: #28a745;
+  }
+  
+  .app-preview img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .features {
+    margin: 6rem 0;
+    text-align: left;
+  }
+  
+  .feature-text {
+    max-width: 600px;
+    margin: 0 auto 4rem;
+  }
+  
+  .feature-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .calendar-integration {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .testimonial-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .integration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .integration-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .footer {
+    background: white;
+    padding: 4rem 2rem;
+    margin-top: 6rem;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-links img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem 2rem;
+    }
+  
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  
+    .features, .testimonials, .integrations {
+      padding: 0 1rem;
+    }
+  }

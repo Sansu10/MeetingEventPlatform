@@ -9,6 +9,7 @@ import Settings from "./Settings/Settings";
 import CreateEvent from "./create/CreateEvent";
 import Booking from "./Booking/Booking";  
 import Availability from "./Availabilty/Availability";
+import LandingPage from "./LandingPage/LandingPage";
 
 import "./App.css";
 
@@ -18,7 +19,8 @@ function App() {
       <AuthProvider>
         <div className="App">
           <Routes>
-            <Route path="/" element={<SignUp />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/signup" element={<SignUp/>}/>
             <Route path="/signin" element={<SignIn />} />
             <Route path="/preferences" element={<Preferences />} />
             
