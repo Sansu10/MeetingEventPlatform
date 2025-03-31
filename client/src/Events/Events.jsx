@@ -4,6 +4,7 @@ import { eventsService } from '../services/events.service';
 import { useNavigate } from 'react-router-dom';
 import './Events.css';
 import CreateEvent from '../create/CreateEvent'; // Import the CreateEvent component
+import { format } from 'date-fns'; // Add this import
 
 // Remove the showCreateModal state and CreateEvent import
 // Update the button handlers to use navigation
@@ -57,6 +58,50 @@ const Events = () => {
     navigate('/create-event');
   };
 
+  const formatEventTime = (startTime, endTime) => {
+    return `${format(new Date(startTime), 'h:mm a')} - ${format(new Date(endTime), 'h:mm a')}`;
+  };
+
+  const handleStatusToggle = async (eventId) => {
+    try {
+      const eventToUpdate = events.find(event => event._id === eventId);
+      const newStatus = eventToUpdate.status === 'active' ? 'inactive' : 'active';
+      
+      // Update in the backend
+      await eventsService.updateEventStatus(eventId, newStatus);
+      
+      // Update local state
+      setEvents(events.map(event => 
+        event._id === eventId 
+          ? { ...event, status: newStatus }
+          : event
+      ));
+    } catch (error) {
+      console.error('Error updating event status:', error);
+      // Optionally show error message to user
+      setError('Failed to update event status');
+    }
+  };
+
+  const handleEdit = (eventId) => {
+    // Navigate to edit page with event ID
+    navigate(`/create-event?edit=${eventId}`);
+  };
+
+  const handleDelete = async (eventId) => {
+    if (window.confirm('Are you sure you want to delete this event?')) {
+      try {
+        await eventsService.deleteEvent(eventId);
+        // Remove event from local state
+        setEvents(events.filter(event => event._id !== eventId));
+      } catch (error) {
+        console.error('Error deleting event:', error);
+        setError('Failed to delete event');
+      }
+    }
+  };
+
+  // Update the event card buttons in the return statement
   return (
     <div className="events-page">
       <div className="sidebar">
@@ -65,9 +110,9 @@ const Events = () => {
         </div>
         <nav>
           <ul>
-            <li className="active">Events</li>
+            <li onClick={() => navigate('/events')} className="active">Events</li>
             <li onClick={() => navigate('/booking')}>Booking</li>
-            <li>Availability</li>
+            <li onClick={() => navigate('/availability')}>Availability</li>
             <li onClick={() => navigate('/settings')}>Settings</li>
           </ul>
         </nav>
@@ -109,20 +154,42 @@ const Events = () => {
             events.map((event) => (
               <div key={event._id} className="event-card">
                 <div className="event-header">
-                  <h3>{event.title}</h3>
-                  <button className="edit-button">✏️</button>
+                  <h2>{event.title}</h2>
+                  <button 
+                    className="edit-button"
+                    onClick={() => handleEdit(event._id)}
+                  >
+                    <img src="/edit-icon.svg" alt="Edit" />
+                  </button>
                 </div>
-                <div className="event-time">
-                  <p>{event.date}</p>
-                  <p>{event.startTime} - {event.endTime}</p>
+                <div className="event-details">
+                  <p className="event-date">
+                    {format(new Date(event.dateTime), 'EEEE, dd MMM')}
+                  </p>
+                  <p className="event-time">
+                    {formatEventTime(event.startTime, event.endTime)}
+                  </p>
+                  <p className="event-duration">{event.duration}hr, Group meeting</p>
                 </div>
                 <div className="event-footer">
-                  <span className="event-status">
-                    {event.status === 'active' ? '🟢' : '⚫️'}
-                  </span>
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      checked={event.status === 'active'}
+                      onChange={() => handleStatusToggle(event._id)}
+                    />
+                    <span className="toggle-slider"></span>
+                  </label>
                   <div className="event-actions">
-                    <button>📋</button>
-                    <button>🗑️</button>
+                    <button className="action-button">
+                      <img src="/copy-icon.svg" alt="Copy" />
+                    </button>
+                    <button 
+                      className="action-button"
+                      onClick={() => handleDelete(event._id)}
+                    >
+                      <img src="/delete-icon.svg" alt="Delete" />
+                    </button>
                   </div>
                 </div>
               </div>

@@ -8,6 +8,8 @@ import Events from "./Events/Events";
 import Settings from "./Settings/Settings";
 import CreateEvent from "./create/CreateEvent";
 import Booking from "./Booking/Booking";  
+import Availability from "./Availabilty/Availability";
+
 import "./App.css";
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/availability" element={<Availability />} />
           </Routes>
         </div>
       </AuthProvider>

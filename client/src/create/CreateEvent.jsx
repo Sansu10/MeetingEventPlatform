@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './CreateEvent.css';
 import { eventsService } from '../services/events.service';  
@@ -19,12 +19,17 @@ const generateTimeSlots = () => {
 
 const CreateEvent = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const queryParams = new URLSearchParams(location.search);
+  const editEventId = queryParams.get('edit');
+
   const [eventData, setEventData] = useState({
     eventTopic: '',
     password: '',
     hostName: user?.firstName + ' ' + user?.lastName || '',
-    participants:[],
+    participants: [],
     description: '',
     date: '',
     time: '02:30',

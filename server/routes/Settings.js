@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
-const auth = require("../middlewares/Auth");   // ✅ Fixed middleware import
+const auth = require("../middlewares/Auth");   //  Fixed middleware import
 const bcrypt = require("bcryptjs");
 
-// ✅ Get User Settings
+//  Get User Settings
 router.get("/", auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.userId).select('-password');
@@ -23,7 +23,7 @@ router.get("/", auth, async (req, res) => {
     }
 });
 
-// ✅ Update User Settings
+//  Update User Settings
 router.put("/", auth, async (req, res) => {
     const { firstName, lastName, email, password, newPassword, confirmPassword } = req.body;
 
@@ -34,7 +34,7 @@ router.put("/", auth, async (req, res) => {
             return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        // ✅ Check if the email is being updated
+        //  Check if the email is being updated
         if (email && email !== user.email) {
             const emailExists = await User.findOne({ email });
             if (emailExists) {
@@ -43,11 +43,11 @@ router.put("/", auth, async (req, res) => {
             user.email = email;
         }
 
-        // ✅ Update First and Last Name
+        //  Update First and Last Name
         if (firstName) user.firstName = firstName;
         if (lastName) user.lastName = lastName;
 
-        // ✅ Update Password (if provided)
+        //  Update Password (if provided)
         if (password && newPassword) {
             const isPasswordCorrect = await bcrypt.compare(password, user.password);
             
@@ -62,7 +62,7 @@ router.put("/", auth, async (req, res) => {
             user.password = await bcrypt.hash(newPassword, 10);
         }
 
-        // ✅ Save updated user data
+        // Save updated user data
         await user.save();
 
         res.status(200).json({ 

@@ -84,8 +84,8 @@ const Booking = () => {
         <nav>
           <ul>
             <li onClick={() => navigate('/events')}>Events</li>
-            <li className="active">Booking</li>
-            <li>Availability</li>
+            <li onClick={() => navigate('/booking')} className="active">Booking</li>
+            <li onClick={() => navigate('/availability')}>Availability</li>
             <li onClick={() => navigate('/settings')}>Settings</li>
           </ul>
         </nav>

@@ -1,0 +1,38 @@
+.calendar-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.activity, .timezone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1a73e8;
+  cursor: pointer;
+}
+
+.arrow {
+  font-size: 1.2rem;
+}
+
+/* Override some react-big-calendar default styles */
+.rbc-calendar {
+  background: white;
+  border-radius: 8px;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #1a73e8 !important;
+  color: white !important;
+}
+
+.rbc-event {
+  background-color: #1a73e8 !important;
+}

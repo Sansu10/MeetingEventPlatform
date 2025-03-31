@@ -4,9 +4,9 @@ const router = express.Router();
 const Event = require('../models/Event');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const auth = require('../middlewares/Auth');  // ✅ Middleware for authentication
+const auth = require('../middlewares/Auth');  // Middleware for authentication
 
-// ✅ Create Event with Participants & Availability Check
+//  Create Event with Participants & Availability Check
 router.post('/', auth, async (req, res) => {
     const { 
         title, description, dateTime, duration, link, bannerImage, backgroundColor, password, participants 
@@ -38,9 +38,9 @@ router.post('/', auth, async (req, res) => {
 
         // ✅ Validate & Convert participants to ObjectId safely
         const participantData = participants
-            .filter(id => mongoose.isValidObjectId(id))  // ✅ Ensure only valid IDs
+            .filter(id => mongoose.isValidObjectId(id))  //  Ensure only valid IDs
             .map(id => ({
-                userId: new mongoose.Types.ObjectId(id),   // ✅ Safe ObjectId conversion
+                userId: new mongoose.Types.ObjectId(id),   //  Safe ObjectId conversion
                 status: "pending"
             }));
 
@@ -68,7 +68,7 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
-// ✅ Get All Events (with pagination)
+//  Get All Events (with pagination)
 router.get('/', auth, async (req, res) => {
     const { page = 1, limit = 10 } = req.query;
 
@@ -164,7 +164,7 @@ router.get('/:id', auth, async (req, res) => {
 });
 
 
-// ✅ Update Event by ID with ObjectId handling
+//  Update Event by ID with ObjectId handling
 router.put('/:id', auth, async (req, res) => {
     try {
         const { dateTime, duration, participants } = req.body;
@@ -191,10 +191,10 @@ router.put('/:id', auth, async (req, res) => {
 
         const updateData = { ...req.body, updatedAt: Date.now() };
 
-        // ✅ Convert participants to ObjectId safely
+        //  Convert participants to ObjectId safely
         if (participants) {
             updateData.participants = participants
-                .filter(id => mongoose.isValidObjectId(id))  // ✅ Filter valid IDs
+                .filter(id => mongoose.isValidObjectId(id))  //  Filter valid IDs
                 .map(id => ({
                     userId: mongoose.Types.ObjectId(id),
                     status: "pending"
@@ -218,7 +218,7 @@ router.put('/:id', auth, async (req, res) => {
     }
 });
 
-// ✅ Delete Event by ID
+//  Delete Event by ID
 router.delete('/:id', auth, async (req, res) => {
     try {
         const event = await Event.findByIdAndDelete(req.params.id);
